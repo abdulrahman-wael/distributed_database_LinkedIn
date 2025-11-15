@@ -85,3 +85,33 @@ WHERE ID = 1 AND Event_ID = 3;
 
 DELETE FROM user_skills
 WHERE ID = 2 AND Skill = 'SEO';
+
+
+-- more values for the fragmentation file queries to work properly and display values.
+INSERT INTO [user] (First_name, Last_name, Additional_name, name_pronunciation, Industry, Country_Region, City, Profile_URL, Email, Phone_number, Birthdate, Website, Instant_messaging, open_to) VALUES
+('John', 'Smith', 'A', 'John Smith', 'Technology', 'USA', 'New York', 'http://profile.com/john', 'john@email.com', '1234567890', '1990-01-15', 'http://website.com', 'john_im', 'Job seeking'),
+('Jane', 'Doe', 'B', 'Jane Doe', 'Finance', 'UK', 'London', 'http://profile.com/jane', 'jane@email.com', '0987654321', '1985-05-20', 'http://website.com', 'jane_im', 'Networking'),
+('Mike', 'Johnson', 'C', 'Mike Johnson', 'Healthcare', 'Canada', 'Toronto', 'http://profile.com/mike', 'mike@email.com', '5555555555', '1988-08-10', NULL, NULL, NULL),
+('Sarah', 'Wilson', 'D', 'Sarah Wilson', 'Technology', 'USA', 'San Francisco', 'http://profile.com/sarah', 'sarah@email.com', '1111111111', '1992-03-25', 'http://website.com', 'sarah_im', 'Job seeking'),
+('David', 'Brown', 'E', 'David Brown', 'Finance', 'UK', 'Manchester', 'http://profile.com/david', 'david@email.com', '2222222222', '1987-11-30', NULL, NULL, 'Networking');
+
+INSERT INTO [event] (Picture_URL, end_datetime, start_datetime, external_event_link, timezone, Title, About, Type, creatorID) VALUES
+('pic1.jpg', '2024-02-20 18:00:00', '2024-02-20 16:00:00', NULL, 'EST', 'Local Conference', 'About local event', 'Conference', 1),
+('pic2.jpg', '2024-02-25 20:00:00', '2024-02-25 18:00:00', 'http://virtual-event.com', 'UTC', 'Virtual Meetup', 'About virtual event', 'Meetup', 2),
+('pic3.jpg', '2024-03-01 17:00:00', '2024-03-01 15:00:00', NULL, 'PST', 'Local Workshop', 'About workshop', 'Workshop', 3);
+
+INSERT INTO post (publisher, media, scheduled_time, targeted_audience, comments_control) VALUES
+('user1', 'media1.jpg', '2024-02-15 10:00:00', 'Tech professionals', 'enabled'),
+('user2', 'media2.jpg', NULL, NULL, 'disabled'),
+('user3', 'media3.jpg', '2024-02-16 14:00:00', 'Finance experts', 'enabled'),
+('user4', 'media4.jpg', NULL, 'Healthcare workers', 'enabled');
+
+INSERT INTO reaction (reactionID, postID, Event_ID, publisher, content) VALUES
+(4, 1, 1, 'user2', 'Great post'),
+(5, 3, 2, 'user1', 'Awesome'),
+(6, 1, 3, 'user3', 'Nice content');
+
+INSERT INTO comments (commentID, postID, Event_ID, publisher, text, media, media_type) VALUES
+(4, 1, 1, 'user2', 'Interesting post', 'comment_media.jpg', 'image'),
+(5, 2, 2, 'user1', 'Good point', NULL, NULL),
+(6, 3, 3, 'user4', 'Well said', 'media_comment.png', 'image');
